@@ -1,0 +1,106 @@
+auth:
+  root : 123456
+  work@RR : Geeker4ZolZ
+  #mysql_ha: hajw1123
+  #访问mysql的用户名: 密码
+
+#######################################
+#mysql的默认连接配置
+
+default:
+  type: mysql
+  port: 3306
+  initialSize: 1
+  maxActive: 20
+  maxWait: 10000
+  filters:
+    - stat
+  auth: root
+
+#######################################
+
+server:
+  #mysql服务
+  dbtest:
+    host: 127.0.0.1
+    #auth: jphappy
+
+  #dbletter:
+  #  host: 10.8.64.36
+  #  auth: work@RR
+	
+  #dbletter_w:
+  #  host: 10.8.64.29
+
+  #dbinfostats:
+  #  host: 10.8.64.33
+
+  #mysql_ha :
+  #  - 10.8.64.35
+  #  - 10.8.64.34
+  #  - 10.8.64.29
+  #  - 10.8.64.30
+
+#######################################
+#
+# [database]:
+#   [key]: [value]
+#   server: [server]
+#
+datasource:
+  test:
+    server: dbtest
+  gop:
+    server: dbtest
+  #card:
+  #  server: dbcard
+  #company_lib:
+  #  server: dbbiz  
+  #card_data:
+  #  server: dbbiz
+  #tiny_url:
+  #  server: dbcard
+
+  #letter:
+  #  server: dbletter
+
+  #infostats:
+  #  server: dbinfostats
+
+  #msg_letter:
+  #  server: dbinfostats
+
+#  mysql_ha:
+#    server: dbcard
+#    initialSize: 0
+#    maxActive: 1
+#    auth : mysql_ha
+#    validationQuery: "select status from server_status order by modified_at desc, id desc limit 1;"
+
+#######################################
+# [database]:
+#   [table]:
+#     partitions: [number]
+#     colunm: [column]
+#
+#partitions:
+  #card:
+  #  user_card:
+  #    partitions: 100
+  #    column: user_id
+  #  card_user:
+  #    partitions: 100
+  #    column: card_id  
+  #  card_record:
+  #    partitions: 100
+  #    column: card_id
+  
+  #card_data:
+  #  vuser_vcard:
+  #    partitions : 100
+  #    column : vuid
+  #letter:
+  #  letter:
+  #    partitions: 100
+  #    column: receiver
+
